@@ -1,0 +1,89 @@
+bgm:s_Title.mp3;
+getUserInput:name -title=如何称呼你 -buttonText=确认; 将用户输入写入 name 变量中
+
+:5月21日，晴。风穿过教室的窗，卷着初夏的槐花香，轻轻落在摊开的练习册页脚。;
+
+:日历被翻到这一页时，你甚至没多留意——对平淡的日常来说，不过是又一个普通的周三罢了。;
+
+changeBg:èæ¯.png;
+changeFigure:ac1add9c19bad7898d.png;
+ZRB:（手肘轻轻撞了撞你的胳膊，声音软乎乎的，带着点小雀跃）同桌～ -left;
+
+ZRB:你知道今天是什么日子吗？;
+
+choose:不道啊:label_2|哦！今天是你的生日对不对？:label_1;
+
+label:label_1
+
+ZRB:喂喂，你在说什么呢？ -left;
+
+ZRB:这怎么可能啦！;
+
+jumpLabel:end; // 跳转到 end
+
+label:label_2; // 创建名为 label_2 的 label
+
+jumpLabel:end; // 跳转到 end
+
+label:end; // 创建名为 end 的 label
+
+ZRB:（肩膀轻轻垮下来，声音低低的，藏着藏不住的失落）那、那算了……不知道就不知道吧😔；
+
+intro:你看着他默默撕了一张纸，笔尖在纸上轻轻划着，像是在盘算着什么。;
+
+{name}:同桌，你在偷偷写什么呀？
+
+ZRB:没、没什么，来，同桌，我给你出一道题怎么样？
+
+:他从笔袋里掏出提前准备好的纸条，原来，他早就预谋好了。;
+
+ZRB:（有些害羞地低下头，把纸条轻轻推到你面前）你看，就是一道二元一次方程，很简单的。;
+
+intro:你低头看去，纸条上工工整整写着两道方程：|x+y=1834|y-x=794;;
+
+label:begin;
+
+choose:X=520 Y=114:able1|X=502 Y=1314:able2| X=520 Y=1314:able3
+
+label:able1;
+
+ZRB:不是吧同桌，你认真算的吗？;
+
+ZRB:再好好算一遍啦！
+
+jumpLabel:begin;
+
+label:able2;
+
+ZRB:什么502啦，那是胶水好不好！认真点呀😤 ( Ĭ ^ Ĭ )
+
+jumpLabel:begin;
+
+label:able3;
+
+ZRB:（语气一下子变得激动，眼睛都亮了）你、你答对了！;
+changeFigure: -next;
+changeBg:none;
+
+jumpLabel:last;
+
+pixiInit;
+
+pixiPerform:cherryBlossoms
+
+:这一刻，{name}忽然就懂了ZRB的心意。;
+
+:原来，她从来都不是单相思，原来，他也一样喜欢着自己。;
+
+:她曾经以为，双向奔赴只是书里的传说。;
+
+:却没想到，这样温柔的幸运，竟然真的落在了自己身上。;
+
+intro:风又吹进教室，槐花香漫满肩头，两人都悄悄明白，他们之间的关系，早已在不知不觉中，变得不一样了。;
+
+intro:完
+
+end;
+end;
+end;
+角色名，留空以继承上句:对话;

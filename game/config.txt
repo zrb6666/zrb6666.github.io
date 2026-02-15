@@ -1,0 +1,9 @@
+Game_name:ZRB的神秘小礼物;
+Game_key:99b1d63b17fbf8;
+Title_img:èæ¯.png;
+Title_bgm:s_Title.mp3;
+Textbox_theme:imss;
+Description:;
+Steam_AppID:;
+Default_Language:zh_CN;
+Enable_Appreciation:false;
