@@ -285,6 +285,7 @@
       "</button>" +
       '<div class="lb-scroll">' +
       '<div class="lb-panel" role="dialog" aria-modal="true" aria-label="证书预览">' +
+      '<p class="lb-loading">证书加载中…</p>' +
       '<img class="lb-img" alt="">' +
       '<p class="lb-cap"></p>' +
       '<p class="lb-hint">点击图片放大 · 再次点击还原</p>' +
@@ -300,12 +301,13 @@
 
     function open(src, name) {
       lastFocus = document.activeElement;
-      img.src = src;
+      box.classList.add("loading");
       img.alt = name || "证书";
       cap.textContent = name || "";
       hint.hidden = false;
       box.classList.remove("zoomed");
       box.classList.add("on");
+      img.src = src;
       box.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       scroll.scrollTop = 0;
@@ -329,6 +331,12 @@
         open(btn.getAttribute("data-src"), btn.getAttribute("data-name"));
       });
     }
+
+    function loaded() {
+      box.classList.remove("loading");
+    }
+    img.addEventListener("load", loaded);
+    img.addEventListener("error", loaded);
 
     img.addEventListener("click", function () {
       var zoomed = box.classList.toggle("zoomed");

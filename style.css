@@ -1,5 +1,9 @@
 /* =========================================================
    作品集 · 极客风样式
+
+   ⚠ 本文件已内联到 index.html 的 <style> 里（省一次网络往返）。
+     改完这里请运行：node sync-css.js
+   =========================================================
    设计基调：近黑背景 + 1px 硬边框 + 等宽字体标签 + 单一薄荷绿强调
    ========================================================= */
 
@@ -653,6 +657,19 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
 }
 .lb.on .lb-img { transform: scale(1); }
 .lb.zoomed .lb-img { max-width: none; max-height: none; cursor: zoom-out; transform: none; }
+
+.lb-loading {
+  display: none;
+  margin: 0; padding: 120px 40px;
+  font-family: var(--mono); font-size: 12px; letter-spacing: .06em;
+  color: var(--dim);
+  animation: lbPulse 1.4s ease-in-out infinite;
+}
+.lb.loading .lb-loading { display: block; }
+.lb.loading .lb-img,
+.lb.loading .lb-cap,
+.lb.loading .lb-hint { display: none; }
+@keyframes lbPulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
 
 .lb-cap {
   margin: 0; text-align: center;

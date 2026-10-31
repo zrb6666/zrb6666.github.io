@@ -1,15 +1,17 @@
 # 个人作品集
 
-纯静态站点，无框架、无构建、无依赖，可直接托管在任意静态服务上。
+纯静态站点，无框架、无运行时依赖，可直接托管在任意静态服务上。
+
+性能：图片全部为 WebP（首屏图 35KB），样式内联进 HTML，首屏只有 2 次网络请求。
 
 ## 结构
 
 ```
-index.html            页面骨架
-style.css             全部样式与响应式规则
+index.html            页面骨架（样式已内联在 <style> 中）
+style.css             样式源文件（仅作编辑用，页面不引用）
 data.js               内容配置（改内容只改这里）
 main.js               渲染与交互
-assets/screenshots/   项目截图
+assets/screenshots/   项目截图（webp）
 ```
 
 ## 更新内容
