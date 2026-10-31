@@ -36,13 +36,15 @@
   }
 
   /* ---------------- 截图窗 ---------------- */
-  function shotHTML(p) {
+  function shotHTML(p, eager) {
     var cover = p.cover || "";
     var file = cover ? cover.split("/").pop() : "cover.png";
     var initial = (p.name || "?").trim().slice(0, 1).toUpperCase();
 
     var img = cover
-      ? '<img src="' + esc(cover) + '" alt="' + esc(p.name) + ' 截图" loading="lazy" ' +
+      ? '<img src="' + esc(cover) + '" alt="' + esc(p.name) + ' 截图" ' +
+        (eager ? 'loading="eager" fetchpriority="high" ' : 'loading="lazy" ') +
+        'decoding="async" ' +
         'onerror="this.parentNode.parentNode.classList.add(\'no-shot\')">'
       : "";
 
@@ -179,7 +181,7 @@
     if (featured) {
       html +=
         '<article class="card featured reveal">' +
-        shotHTML(featured) +
+        shotHTML(featured, true) +
         '<div class="card-body">' +
         '<div class="card-top"><h3>' + esc(featured.name) + "</h3>" +
         (featured.status ? '<span class="badge">' + esc(featured.status) + "</span>" : "") +

@@ -59,7 +59,7 @@ const SITE = {
         "真实统计：只记录实际专注时间",
         "ArkTS 原生实现，适配鸿蒙设计规范",
       ],
-      cover: "assets/screenshots/focus-guard-harmony.png",
+      cover: "assets/screenshots/focus-guard-harmony.webp",
       demo: "https://appgallery.huawei.com/app/detail?id=com.focusguard.pro",
       demoLabel: "华为应用市场",
       stack: ["HarmonyOS NEXT", "ArkTS", "ArkUI", "API 12"],
@@ -74,7 +74,7 @@ const SITE = {
         "Focus Guard 的电脑端与鸿蒙端是两个独立的应用，分别开发、分别发布。" +
         "桌面端基于 Electron + Vue 3 构建，把番茄钟与专注流程搬到键盘鼠标场景。",
       highlights: [],
-      cover: "assets/screenshots/focus-guard-desktop.png",
+      cover: "assets/screenshots/focus-guard-desktop.webp",
       demo: "",
       stack: ["Electron", "Vue 3", "JavaScript"],
       links: [
@@ -96,7 +96,7 @@ const SITE = {
         "专注界面：环形计时、多轮循环、7 天柱状图与最近会话",
         "如实列出「已生效」与「无法防护」两组项目，不假装封死一切",
       ],
-      cover: "assets/screenshots/lx-focus.png",
+      cover: "assets/screenshots/lx-focus.webp",
       demo: "",
       stack: ["Electron", "Vue 3", "TypeScript", "C#"],
       links: [
@@ -113,7 +113,7 @@ const SITE = {
         "能自动显示当前课程、上下课提醒、调课与多周轮换课表，并通过组件、主题和插件扩展。" +
         "我参与团队开发，提交了其中一部分代码。",
       highlights: ["团队协作开发，参与部分模块的代码提交"],
-      cover: "assets/screenshots/classisland.png",
+      cover: "assets/screenshots/classisland.webp",
       demo: "https://www.classisland.tech/",
       demoLabel: "官网",
       stack: [".NET", "Avalonia", "C#"],
@@ -133,7 +133,7 @@ const SITE = {
       issued: "2026.10.24",
       valid: "2028.10.23",
       level: "Professional Certificate",
-      image: "assets/screenshots/cert-harmony.jpg",
+      image: "assets/screenshots/cert-harmony.webp",
     },
     {
       name: "人工智能初识微认证",
@@ -141,7 +141,7 @@ const SITE = {
       issued: "2026.08.11",
       valid: "2028.08.10",
       level: "Micro Certification",
-      image: "assets/screenshots/cert-ai.jpg",
+      image: "assets/screenshots/cert-ai.webp",
     },
   ],
 
