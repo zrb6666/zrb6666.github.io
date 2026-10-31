@@ -37,7 +37,7 @@ const SITE = {
     { k: "since", v: "2025" },
     { k: "projects", v: "4" },
     { k: "released", v: "1 app" },
-    { k: "stack", v: "HarmonyOS" },
+    { k: "certs", v: "2" },
   ],
 
   /* ---------- 项目 ---------- */
@@ -120,6 +120,25 @@ const SITE = {
       links: [
         { label: "GitHub", href: "https://github.com/ClassIsland/ClassIsland", icon: "github" },
       ],
+    },
+  ],
+
+  /* ---------- 认证 ---------- */
+  /* name 证书名称 / org 发证机构 / issued 发证日期 / valid 有效期至 / level 证书类型 */
+  certs: [
+    {
+      name: "HarmonyOS 应用开发者基础认证",
+      org: "华为开发者联盟 · 开发者学堂",
+      issued: "2026.10.24",
+      valid: "2028.10.23",
+      level: "Professional Certificate",
+    },
+    {
+      name: "人工智能初识微认证",
+      org: "Huawei Certification · 学习与认证服务",
+      issued: "2026.08.11",
+      valid: "2028.08.10",
+      level: "Micro Certification",
     },
   ],
 

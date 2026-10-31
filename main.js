@@ -240,6 +240,31 @@
       .join("");
   }
 
+  function renderCerts() {
+    var list = SITE.certs || [];
+    $("certsList").innerHTML = list
+      .map(function (c) {
+        return (
+          '<article class="cert reveal">' +
+          '<div class="cert-top">' +
+          '<span class="cert-seal">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">' +
+          '<path d="M12 3 4.5 6v5.6c0 4.6 3.1 8 7.5 9.4 4.4-1.4 7.5-4.8 7.5-9.4V6L12 3Z"/>' +
+          '<path d="m8.6 11.8 2.4 2.4 4.4-4.6"/></svg>' +
+          esc(c.level || "CERTIFIED") + "</span>" +
+          (c.valid ? '<span class="cert-valid">VALID · ' + esc(c.valid) + "</span>" : "") +
+          "</div>" +
+          "<h3>" + esc(c.name) + "</h3>" +
+          '<p class="cert-org">' + esc(c.org) + "</p>" +
+          '<dl class="cert-meta">' +
+          (c.issued ? "<div><dt>ISSUED</dt><dd>" + esc(c.issued) + "</dd></div>" : "") +
+          (c.valid ? "<div><dt>EXPIRES</dt><dd>" + esc(c.valid) + "</dd></div>" : "") +
+          "</dl></article>"
+        );
+      })
+      .join("");
+  }
+
   function renderTimeline() {
     $("timeline").innerHTML = (SITE.timeline || [])
       .map(function (t) {
@@ -371,6 +396,7 @@
     renderIdentity();
     renderStats();
     renderProjects();
+    renderCerts();
     renderStack();
     renderTimeline();
     renderContacts();
