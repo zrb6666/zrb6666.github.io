@@ -1,365 +1,159 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="./icons/favicon.ico" />
-    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
-    <link rel="manifest" href="./manifest.json" />
-    <title>WebGAL</title>
-    <style>
-      .html-body__effect-background {
-        height: 100vh;
-        width: 100vw;
-        filter: blur(50px);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>There be · 作品集</title>
+<meta name="description" content="There be (ZRB) 的项目作品集 — 独立开发者，HarmonyOS 与桌面端应用。" />
+<meta name="theme-color" content="#0a0b0d" />
+<meta property="og:title" content="There be · 作品集" />
+<meta property="og:description" content="独立开发者，做 HarmonyOS 应用与各种小工具。" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0b0d' stroke='%2357e0a0' stroke-width='1.5'/%3E%3Ctext x='16' y='22' font-size='15' font-family='monospace' font-weight='700' text-anchor='middle' fill='%2357e0a0'%3ET%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-      .html-body__title-enter {
-        width: 2560px;
-        height: 1440px;
-        overflow: hidden;
-        position: absolute;
-        top: 0;
-        z-index: 14;
-        opacity: 1;
-        transition: opacity 1.5s;
-      }
+<div class="bg" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+</div>
 
-      .title-enter__initial-background {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-        top: 0;
-        opacity: 1;
-        transition: opacity 1s;
-      }
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" id="brandMark">T</span>
+      <span class="brand-text" id="brandText">There be</span>
+      <span class="brand-slash">/ portfolio</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about"><span>01</span>关于</a>
+      <a href="#projects"><span>02</span>项目</a>
+      <a href="#stack"><span>03</span>技术</a>
+      <a href="#contact"><span>04</span>联系</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换主题">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></svg>
+      </button>
+      <button class="icon-btn burger" id="burger" type="button" aria-label="菜单" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
-      .title-enter__white-background {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        opacity: 0;
-        background: linear-gradient(
-          165deg,
-          rgba(255, 255, 255, 0.25) 0%,
-          rgba(255, 255, 255, 1) 50%,
-          rgba(255, 255, 255, 0.25) 100%
-        );
-        transition: opacity 1s;
-      }
+<main id="top">
 
-      .title-enter__container {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        height: 100%;
-        opacity: 1;
-        font-size: 175%;
-        transition: opacity 1s;
-        z-index: 15;
-        font-family: '思源宋体', Georgia, serif;
-      }
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="term reveal">
+        <span class="term-prompt">$</span>
+        <span id="heroPrompt">whoami</span>
+        <span class="caret" aria-hidden="true"></span>
+      </p>
 
-      .title-enter-container__center-text {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+      <h1 class="hero-title reveal">
+        <span id="heroName">There be</span>
+        <span class="hero-alias" id="heroAlias">ZRB</span>
+      </h1>
 
-      .title-enter-container__center-text > div {
-        letter-spacing: 0.25em;
-        padding: 2em 2em 2em 2em;
-        text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-        transition: text-shadow 1s;
-        font-size: 175%;
-        animation: title-enter-container__center-text--blink 4s infinite;
-      }
+      <p class="hero-role reveal" id="heroRole">独立开发者 / HarmonyOS 应用开发</p>
+      <p class="hero-tag reveal" id="heroTag"></p>
 
-      @keyframes title-enter-container__center-text--blink {
-        0% {
-          text-shadow: 0 0 15px rgba(0, 0, 0, 0.65);
-        }
-        50% {
-          text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-        100% {
-          text-shadow: 0 0 15px rgba(0, 0, 0, 0.65);
-        }
-      }
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#projects">
+          查看项目
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" id="heroGithub" href="#" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
 
-      .title-enter-container__link-to-github {
-        position: absolute;
-        bottom: 1em;
-        color: #999;
-        font-size: 75%;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        flex-flow: column;
-        align-items: center;
-      }
+      <div class="stats reveal" id="stats"></div>
+    </div>
+  </section>
 
-      .title-enter-container__link-to-github > div {
-        padding: 0 0 0.25em 0;
-      }
-    </style>
-    <script type="module" crossorigin src="./assets/index-49446313.js"></script>
-    <link rel="stylesheet" href="./assets/index-52a967b4.css">
-  </head>
-  <body>
-    <!-- 背景模糊 -->
-    <div class="html-body__effect-background"></div>
-    <!-- 落地页 -->
-    <div class="html-body__title-enter">
-      <div class="title-enter__initial-background"></div>
-      <div class="title-enter__white-background"></div>
-      <div class="title-enter__container">
-        <div class="title-enter-container__center-text">
-          <div>PRESS THE SCREEN TO START</div>
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">01</span>
+        <h2>关于</h2>
+        <span class="sec-line"></span>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p id="aboutIntro"></p>
+          <div class="chips" id="aboutChips"></div>
         </div>
-        <div class="title-enter-container__link-to-github">
-          <div>Powered by <a> WebGAL </a> Framework</div>
-        </div>
+        <dl class="facts reveal" id="facts"></dl>
       </div>
     </div>
-    <!-- 紧急回避页挂载点 -->
-    <div id="html-body__panic-overlay"></div>
-    <!-- 应用挂载点 -->
-    <div id="root"></div>
-    <!-- 在窗口大小改变时进行强制缩放 -->
-    <script>
-      (() => {
-        const isIOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-        const resize = () => {
-          const targetHeight = 1440; // 目标高度
-          const targetWidth = 2560; // 目标宽度
+  </section>
 
-          const h = window.innerHeight; // 窗口高度
-          const w = window.innerWidth; // 窗口宽度
-          const zoomH = h / targetHeight; // 以窗口高度为基准的变换比
-          const zoomW = w / targetWidth; // 以窗口宽度为基准的变换比
-          const zoomH2 = w / targetHeight; // 竖屏时以窗口高度为基础的变换比
-          const zoomW2 = h / targetWidth; // 竖屏时以窗口宽度为基础的变换比
-          let mh = (targetHeight - h) / 2; // y轴移动距离
-          let mw = (targetWidth - w) / 2; // x轴移动距离
-          let mh2os = targetWidth / 2 - w / 2; // 竖屏时 y轴移动距离
-          let mw2os = targetHeight / 2 - h / 2; // 竖屏时 x轴移动距离
-          let transform = '';
-          let effectBackgroundTransform = '';
-          const root = document.querySelector('#root'); // 获取根元素
-          const titleEnter = document.querySelector('.html-body__title-enter');
-          const effectBackground = document.querySelector('.html-body__effect-background');
-          const elements = [root, titleEnter];
-          if (w > h) {
-            if (effectBackground) {
-              effectBackground.style.height = `100vh`;
-              effectBackground.style.width = `100vw`;
-              effectBackgroundTransform = '';
-            }
-            mw = -mw;
-            mh = -mh;
-            if (w * (9 / 16) >= h) {
-              transform = `translate(${mw}px, ${mh}px) ` + `scale(${zoomH}, ${zoomH}) `;
-            }
-            if (w * (9 / 16) < h) {
-              transform = `translate(${mw}px, ${mh}px) ` + `scale(${zoomW}, ${zoomW}) `;
-            }
-          } else {
-            // 旋转
-            if (effectBackground) {
-              effectBackground.style.height = `${targetHeight}px `;
-              effectBackground.style.width = `${targetWidth}px `;
-            }
-            mw2os = -mw2os;
-            if (h * (9 / 16) >= w) {
-              effectBackgroundTransform =
-                `rotate(90deg) ` + `translate(${mw2os}px, ${mh2os}px) ` + `scale(${zoomH2 * 1.75}, ${zoomH2 * 1.75}) `;
-              transform = `rotate(90deg) ` + `translate(${mw2os}px, ${mh2os}px) ` + `scale(${zoomH2},${zoomH2}) `;
-            }
-            if (h * (9 / 16) < w) {
-              effectBackgroundTransform =
-                `rotate(90deg) ` + ` translate(${mw2os}px, ${mh2os}px) ` + `scale(${zoomW2 * 1.75}, ${zoomW2 * 1.75}) `;
-              transform = `rotate(90deg) ` + `translate(${mw2os}px, ${mh2os}px) ` + `scale(${zoomW2},${zoomW2}) `;
-            }
-            // iOS 不强制旋转
-            if (isIOS) {
-              const zoomWi = w / targetWidth;
-              transform = `translate(${-mw}px, ${-mh}px) ` + `scale(${zoomWi},${zoomWi}) `;
-            }
-          }
-          if (effectBackground) {
-            effectBackground.style.transform = effectBackgroundTransform;
-          }
-          for (const element of elements) {
-            if (element) {
-              element.style.transform = transform;
-            }
-          }
-        };
-        if (!isIOS) {
-          // 非 IOS
-          // 创建一个新的 meta 标签
-          const metaTag = document.createElement('meta');
-          metaTag.name = 'viewport';
-          metaTag.content = 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no';
-          // 将该标签添加到 head 中
-          document.head.appendChild(metaTag);
-          resize();
-          window.onload = resize;
-          window.onresize = resize;
-          // 监听键盘 F11 键按下事件，全屏时触发页面调整
-          document.onkeydown = (e) => {
-            if (e && e.key === 'F11') {
-              setTimeout(() => {
-                resize();
-              }, 100);
-            }
-          };
-        } else {
-          // IOS
-          const metaTag = document.createElement('meta');
-          metaTag.name = 'viewport';
-          metaTag.content = 'width=device-width, initial-scale=0.22, minimum-scale=0.01, maximum-scale=1';
-          // 将该标签添加到 head 中
-          document.head.appendChild(metaTag);
-          const styleTag = document.createElement('style');
-          styleTag.textContent = '* { font-synthesis: none !important; }';
-          document.head.appendChild(styleTag);
-        }
-      })();
-    </script>
-    <!-- 注册 Service Worker -->
-    <script>
-      (() => {
-        const isIOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-        if ('serviceWorker' in navigator && !isIOS) {
-          navigator.serviceWorker
-            .register('./webgal-serviceworker.js')
-            .then((reg) => {
-              console.log('Registration succeeded. Scope is ' + reg.scope);
-            })
-            .catch((error) => {
-              console.log('Registration failed with ' + error);
-            });
-        }
-      })();
-    </script>
-    <!-- 首屏加载 -->
-    <script>
-      (() => {
-        const isIOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
-        let enterPromiseResolve;
-        const enterPromise = new Promise((res) => {
-          enterPromiseResolve = res;
-        });
-        const renderPromise = new Promise((res) => {
-          window.renderPromiseResolve = () => {
-            res();
-            delete window.renderPromiseResolve;
-          };
-        });
-        // 将播放bgm的事件发送出去
-        Promise.all([enterPromise, renderPromise]).then(() => {
-          const event = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true,
-          });
-          const target = document.querySelector('.title__enter-game-target');
-          if (target) {
-            target.dispatchEvent(event);
-          }
-        });
-        /** 点击屏幕，进入引擎主界面 */
-        const enter = () => {
-          const initialBackground = document.querySelector('.title-enter__initial-background');
-          if (initialBackground) {
-            initialBackground.style.opacity = '0';
-          }
-          const container = document.querySelector('.title-enter__container');
-          if (container) {
-            container.style.opacity = '0';
-          }
-          const whiteBackground = document.querySelector('.title-enter__white-background');
-          setTimeout(() => {
-            if (whiteBackground) {
-              whiteBackground.style.opacity = '1';
-            }
-          }, 50); // 在50ms后开始显示白色渐变
-          const titleEnter = document.querySelector('.html-body__title-enter');
-          setTimeout(() => {
-            if (titleEnter) titleEnter.style.opacity = '0';
-          }, 500); // 500ms后开始降低落地页透明度
-          if (!isIOS && titleEnter) {
-            titleEnter.style.pointerEvents = 'none'; // 落地页不再响应点击
-            titleEnter.style.background = 'linear-gradient( #a1c4fd 0%, #c2e9fb 100%)'; // 改变标题渐变效果
-          }
-          setTimeout(() => {
-            if (titleEnter) {
-              titleEnter.style.display = 'none';
-            }
-          }, 2000); // 将落地页设置为不显示
-          enterPromiseResolve();
-        };
-        const titleEnter = document.querySelector('.html-body__title-enter');
-        if (titleEnter) {
-          titleEnter.onclick = enter;
-        }
-        const linkToGithub = document.querySelector('.title-enter-container__link-to-github');
-        const aTag = linkToGithub?.querySelector('a');
-        if (aTag) {
-          aTag.href = 'https://github.com/OpenWebGAL/WebGAL';
-          aTag.onclick = (event) => event.stopPropagation();
-        }
-      })();
-    </script>
-    <!-- 加载IIFE插件 -->
-    <script>
-      (() => {
-        const loadScript = (url, type) => {
-          return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.src = url;
-            if (type) script.type = type;
-            script.onload = () => resolve(`Loaded: ${url}`);
-            script.onerror = () => reject(new Error(`Failed to load: ${url}`));
-            document.head.appendChild(script);
-          });
-        };
-        const loadIifePlugin = async (pluginPath) => {
-          try {
-            const info = await loadScript(pluginPath);
-            console.log(info);
-            return true;
-          } catch (error) {
-            console.warn(error);
-            return false;
-          }
-        };
-        // 尝试加载 Live2D SDK，
-        // 只有在用户自行取得 Live2D 许可并放到下面的目录时，这里才可能加载成功。
-        // 本项目 **没有** 引入 Live2D SDK
-        // Attempt to load the Live2D SDK.
-        // This will only succeed if the user has obtained a Live2D license and placed it in the directory below.
-        // This project **does not** include the Live2D SDK.
-        // Live2D SDK の読み込みを試みます。
-        // ユーザーが Live2D ライセンスを取得し、以下のディレクトリに配置した場合のみ、読み込みが成功します。
-        // このプロジェクトには Live2D SDK は**含まれていません**
-        const live2d2Promise = loadIifePlugin('lib/live2d.min.js');
-        const live2d4Promise = loadIifePlugin('lib/live2dcubismcore.min.js');
-        window.live2dPromise = Promise.all([live2d2Promise, live2d4Promise]);
-      })();
-    </script>
-    <!-- main文件 -->
-    
-  </body>
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">02</span>
+        <h2>项目</h2>
+        <span class="sec-line"></span>
+        <p class="sec-sub">需求、设计、开发、上线 —— 一个人走完。</p>
+      </div>
+      <div class="projects" id="projectsList"></div>
+    </div>
+  </section>
+
+  <!-- ============ STACK ============ -->
+  <section id="stack" class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">03</span>
+        <h2>技术栈</h2>
+        <span class="sec-line"></span>
+      </div>
+      <div class="stack-grid" id="stackGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE ============ -->
+  <section id="journey" class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-no">04</span>
+        <h2>时间线</h2>
+        <span class="sec-line"></span>
+      </div>
+      <ol class="timeline" id="timeline"></ol>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="contact reveal">
+        <div class="contact-head">
+          <span class="sec-no">05</span>
+          <h2>联系</h2>
+          <p class="sec-sub">有想法、有问题，或者想一起做点东西 —— 随时找我。</p>
+        </div>
+        <div class="contact-list" id="contactLinks"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year">2026</span> <span id="footerName">There be</span></span>
+    <span class="dim">static site · no framework · <a href="#top">back to top ↑</a></span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
 </html>
