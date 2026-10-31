@@ -124,7 +124,8 @@ const SITE = {
   ],
 
   /* ---------- 认证 ---------- */
-  /* name 证书名称 / org 发证机构 / issued 发证日期 / valid 有效期至 / level 证书类型 */
+  /* name 证书名称 / org 发证机构 / issued 发证日期 / valid 有效期至 / level 证书类型
+     image 证书图片路径（可留空，填了卡片会出现「查看证书」） */
   certs: [
     {
       name: "HarmonyOS 应用开发者基础认证",
@@ -132,6 +133,7 @@ const SITE = {
       issued: "2026.10.24",
       valid: "2028.10.23",
       level: "Professional Certificate",
+      image: "assets/screenshots/cert-harmony.jpg",
     },
     {
       name: "人工智能初识微认证",
@@ -139,6 +141,7 @@ const SITE = {
       issued: "2026.08.11",
       valid: "2028.08.10",
       level: "Micro Certification",
+      image: "assets/screenshots/cert-ai.jpg",
     },
   ],
 

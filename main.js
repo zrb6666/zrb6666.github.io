@@ -17,6 +17,8 @@
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 4h6v6M20 4l-8.5 8.5"/><path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></svg>',
     link:
       '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 13.8a4 4 0 0 0 5.7 0l2.6-2.6a4 4 0 0 0-5.7-5.7L11.4 6.7"/><path d="M14 10.2a4 4 0 0 0-5.7 0l-2.6 2.6a4 4 0 0 0 5.7 5.7l1.2-1.2"/></svg>',
+    zoom:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.6" cy="10.6" r="6.4"/><path d="m15.4 15.4 4.4 4.4M10.6 8v5.2M8 10.6h5.2"/></svg>',
   };
 
   function icon(name) {
@@ -256,13 +258,90 @@
           "</div>" +
           "<h3>" + esc(c.name) + "</h3>" +
           '<p class="cert-org">' + esc(c.org) + "</p>" +
+          '<div class="cert-bottom">' +
           '<dl class="cert-meta">' +
           (c.issued ? "<div><dt>ISSUED</dt><dd>" + esc(c.issued) + "</dd></div>" : "") +
           (c.valid ? "<div><dt>EXPIRES</dt><dd>" + esc(c.valid) + "</dd></div>" : "") +
-          "</dl></article>"
+          "</dl>" +
+          (c.image
+            ? '<button class="cert-view" type="button" data-src="' + esc(c.image) +
+              '" data-name="' + esc(c.name) + '">' + icon("zoom") + "查看证书</button>"
+            : "") +
+          "</div></article>"
         );
       })
       .join("");
+  }
+
+  function initCertLightbox() {
+    var box = document.createElement("div");
+    box.className = "lb";
+    box.setAttribute("aria-hidden", "true");
+    box.innerHTML =
+      '<button class="lb-close" type="button" aria-label="关闭预览">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>' +
+      "</button>" +
+      '<div class="lb-scroll">' +
+      '<div class="lb-panel" role="dialog" aria-modal="true" aria-label="证书预览">' +
+      '<img class="lb-img" alt="">' +
+      '<p class="lb-cap"></p>' +
+      '<p class="lb-hint">点击图片放大 · 再次点击还原</p>' +
+      "</div></div>";
+    document.body.appendChild(box);
+
+    var scroll = box.querySelector(".lb-scroll");
+    var img = box.querySelector(".lb-img");
+    var cap = box.querySelector(".lb-cap");
+    var hint = box.querySelector(".lb-hint");
+    var closeBtn = box.querySelector(".lb-close");
+    var lastFocus = null;
+
+    function open(src, name) {
+      lastFocus = document.activeElement;
+      img.src = src;
+      img.alt = name || "证书";
+      cap.textContent = name || "";
+      hint.hidden = false;
+      box.classList.remove("zoomed");
+      box.classList.add("on");
+      box.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      scroll.scrollTop = 0;
+      closeBtn.focus();
+    }
+
+    function close() {
+      box.classList.remove("on", "zoomed");
+      box.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      img.removeAttribute("src");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    var list = $("certsList");
+    if (list) {
+      list.addEventListener("click", function (e) {
+        var t = e.target;
+        var btn = t && t.closest ? t.closest(".cert-view") : null;
+        if (!btn) return;
+        open(btn.getAttribute("data-src"), btn.getAttribute("data-name"));
+      });
+    }
+
+    img.addEventListener("click", function () {
+      var zoomed = box.classList.toggle("zoomed");
+      hint.hidden = true;
+      if (zoomed) scroll.scrollTop = 0;
+    });
+
+    closeBtn.addEventListener("click", close);
+    box.addEventListener("click", function (e) {
+      if (e.target === box || e.target === scroll) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!box.classList.contains("on")) return;
+      if (e.key === "Escape") close();
+    });
   }
 
   function renderTimeline() {
@@ -401,6 +480,7 @@
     renderTimeline();
     renderContacts();
 
+    initCertLightbox();
     initTheme();
     initNav();
     initReveal();
