@@ -9,7 +9,8 @@
    cover      截图路径，放到 assets/screenshots/ 下
               截图建议 16:10 或 16:9，宽度 ≥1200px
               文件不存在时会自动显示代码风封面，不会破版
-   demo       在线演示地址（可留空，填了会显示绿色按钮）
+   demo       在线演示 / 应用市场地址（可留空，填了会显示绿色按钮）
+   demoLabel  绿色按钮文字，默认「在线演示」；应用市场可填「华为应用市场」
    stack      技术栈数组（留空则不显示该行）
    highlights 亮点列表（可留空）
    links      额外链接（GitHub / Gitee / 官网 等）
@@ -59,7 +60,8 @@ const SITE = {
         "ArkTS 原生实现，适配鸿蒙设计规范",
       ],
       cover: "assets/screenshots/focus-guard-harmony.png",
-      demo: "",
+      demo: "https://appgallery.huawei.com/app/detail?id=com.focusguard.pro",
+      demoLabel: "华为应用市场",
       stack: ["HarmonyOS NEXT", "ArkTS", "ArkUI", "API 12"],
       links: [],
     },
@@ -113,6 +115,7 @@ const SITE = {
       highlights: ["团队协作开发，参与部分模块的代码提交"],
       cover: "assets/screenshots/classisland.png",
       demo: "https://www.classisland.tech/",
+      demoLabel: "官网",
       stack: [".NET", "Avalonia", "C#"],
       links: [
         { label: "GitHub", href: "https://github.com/ClassIsland/ClassIsland", icon: "github" },

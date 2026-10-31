@@ -65,7 +65,7 @@
     if (p.demo) {
       out +=
         '<a class="link solid" href="' + esc(p.demo) + '" target="_blank" rel="noopener">' +
-        icon("demo") + "在线演示</a>";
+        icon("demo") + esc(p.demoLabel || "在线演示") + "</a>";
     }
     (p.links || []).forEach(function (l) {
       out +=
