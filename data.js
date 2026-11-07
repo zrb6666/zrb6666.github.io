@@ -25,9 +25,8 @@ const SITE = {
   prompt: "whoami",                      // 首屏那行终端命令，可改成 "cat about.md"
   tagline: "技术宅改变世界",
   intro:
-    "高中在读，独立开发者。多数项目由我一个人走完需求、设计、开发、发布的完整流程，" +
-    "也参与团队项目中的部分模块开发。主要方向是 HarmonyOS NEXT 原生应用，同时在做桌面端。" +
-    "写代码的出发点很简单：先解决自己的问题，再看有没有人也需要。",
+    "高中在读，独立开发者。主要做 HarmonyOS NEXT 原生应用与桌面端工具，" +
+    "也参与团队项目的部分模块开发。",
   location: "贵州 · 贵阳",
   status: "OPEN TO COLLAB",              // 首屏状态标签
   avatarText: "T",
@@ -110,15 +109,18 @@ const SITE = {
       status: "团队项目",
       desc:
         "面向班级大屏的课表信息显示工具，基于 .NET + Avalonia 构建，支持 Windows / Linux / macOS。" +
-        "能自动显示当前课程、上下课提醒、调课与多周轮换课表，并通过组件、主题和插件扩展。" +
+        "自动显示当前课程、上下课提醒与多周轮换课表，可用组件、主题和插件扩展。" +
+        "项目自 2023 年起持续迭代，已有三周年回顾短片与 ClassIsland 2 宣传片。" +
         "我参与团队开发，提交了其中一部分代码。",
-      highlights: ["团队协作开发，参与部分模块的代码提交"],
-      cover: "", // 暂无截图；补图后填 assets/screenshots/classisland.webp
+      highlights: ["团队协作开发，参与部分模块的代码提交", "官方三周年回顾短片与 ClassIsland 2 宣传片"],
+      cover: "assets/screenshots/classisland.webp",
       demo: "https://www.classisland.tech/",
       demoLabel: "官网",
       stack: [".NET", "Avalonia", "C#"],
       links: [
         { label: "GitHub", href: "https://github.com/ClassIsland/ClassIsland", icon: "github" },
+        { label: "三周年短片", href: "https://www.bilibili.com/video/BV1sJe36ZEb9/", icon: "link" },
+        { label: "CI2 宣传片", href: "https://www.bilibili.com/video/BV1SYZyBDEXJ/", icon: "link" },
       ],
     },
   ],
@@ -154,24 +156,15 @@ const SITE = {
 
   /* ---------- 时间线 ---------- */
   /* time  年份（13 个风格版本都读它，保持 4 位年份以免破版）
-     date  精确日期（可选；极客版 / 米哈游版会优先显示，缺失时回退到 time）
+     date  精确日期（可选；极客版 / 米哈游版优先显示，缺失时回退到 time）
      tag   分类（可选：项目 / 认证 / 竞赛 / 里程碑）
-     顺序：由近到远；每条都只用可查证的事实，不编造月份 */
+     image 配图（可选；极客版 / 米哈游版显示缩略图，点击放大）
+     顺序：由近到远 */
   timeline: [
-    {
-      time: "2026", date: "2026.11.07", tag: "里程碑",
-      title: "作品集扩到十三版 + 介绍片",
-      desc: "同一份 data.js 驱动十三种视觉风格；另制作 48 秒介绍片，配乐由代码合成，未使用任何素材。",
-    },
-    {
-      time: "2026", date: "2026.10.31", tag: "里程碑",
-      title: "个人作品集站点上线",
-      desc: "纯静态站点替换原先的 WebGAL 页面；图片转 WebP、样式内联，首屏从 900KB 压到 70KB。",
-    },
     {
       time: "2026", date: "2026.10.24", tag: "认证",
       title: "HarmonyOS 应用开发者基础认证",
-      desc: "华为开发者联盟 · 开发者学堂颁发，证书有效期至 2028.10.23。",
+      desc: "华为开发者联盟 · 开发者学堂颁发。",
     },
     {
       time: "2026", date: "2026.09.25", tag: "项目",
@@ -181,37 +174,36 @@ const SITE = {
     {
       time: "2026", date: "2026.08.11", tag: "认证",
       title: "人工智能初识微认证",
-      desc: "Huawei Certification 微认证，证书有效期至 2028.08.10。",
+      desc: "Huawei Certification 微认证。",
+    },
+    {
+      time: "2026", date: "2026.08.10", tag: "项目",
+      title: "Focus Guard 上架华为应用市场",
+      desc: "v1.0.2 正式上架；严格模式、违规拦截，专注时长只记真实计时。",
+      image: "assets/screenshots/appgallery-stats.webp",
+      imageAlt: "华为应用市场后台数据：有效曝光 1.75 万、详情页访问 760",
     },
     {
       time: "2026", date: "2026.08.10", tag: "项目",
       title: "Focus Guard Pro 桌面端开源",
-      desc: "Electron + Vue 3 独立应用，与鸿蒙端分别开发、分别发布；08.09 建仓，次日发布 v1.5.0 并同步 Gitee。",
-    },
-    {
-      time: "2026", tag: "项目",
-      title: "Focus Guard 上架鸿蒙",
-      desc: "v1.0.2 在华为应用市场正式上架；严格模式、违规拦截，专注时长只记真实计时。",
+      desc: "Electron + Vue 3 独立应用，与鸿蒙端分别开发、分别发布。",
     },
     {
       time: "2026", date: "2026.02.15", tag: "项目",
       title: "网页端 Galgame 上线",
-      desc: "用 WebGAL 引擎制作《ZRB的神秘小礼物》，部署在 zrb6666.github.io，同年 10 月被作品集替换。",
+      desc: "用 WebGAL 引擎制作的《ZRB的神秘小礼物》。",
     },
     {
       time: "2025", tag: "里程碑",
-      title: "成为 AGC 实名开发者",
-      desc: "开始独立完成应用的设计、开发与发布。",
+      title: "开始独立开发",
+      desc: "成为 AGC 实名开发者，从第一行 ArkTS 开始，独立完成应用的设计、开发与发布。",
     },
     {
-      time: "2025", tag: "里程碑",
-      title: "第一行 ArkTS",
-      desc: "从语法开始，把想法第一次变成能装进手机的应用。",
-    },
-    {
-      time: "2024", tag: "竞赛",
-      title: "全国青少年信息素养大赛 · 贵阳市第三名",
-      desc: "市级信息素养竞赛获奖，也是时间线里最早的一条记录。",
+      time: "2023", tag: "竞赛",
+      title: "「贵青杯」贵州省青少年航空航天创新设计大赛",
+      desc: "AI 创想家赛项 · 优秀完赛奖。",
+      image: "assets/screenshots/cert-guiqingbei.webp",
+      imageAlt: "2023 年「贵青杯」荣誉证书",
     },
   ],
 
