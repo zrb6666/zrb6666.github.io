@@ -357,8 +357,10 @@
   function renderTimeline() {
     $("timeline").innerHTML = (SITE.timeline || [])
       .map(function (t) {
+        var when = esc(t.date || t.time);
+        var tag = t.tag ? '<span class="tl-tag">' + esc(t.tag) + "</span>" : "";
         return (
-          '<li class="reveal"><time>' + esc(t.time) + "</time><h4>" + esc(t.title) +
+          '<li class="reveal" data-tag="' + esc(t.tag || "") + '"><time>' + when + tag + "</time><h4>" + esc(t.title) +
           "</h4><p>" + esc(t.desc) + "</p></li>"
         );
       })
