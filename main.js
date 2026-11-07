@@ -265,10 +265,16 @@
           (c.issued ? "<div><dt>ISSUED</dt><dd>" + esc(c.issued) + "</dd></div>" : "") +
           (c.valid ? "<div><dt>EXPIRES</dt><dd>" + esc(c.valid) + "</dd></div>" : "") +
           "</dl>" +
+          '<div class="cert-actions">' +
           (c.image
             ? '<button class="cert-view" type="button" data-src="' + esc(c.image) +
               '" data-name="' + esc(c.name) + '">' + icon("zoom") + "查看证书</button>"
             : "") +
+          (c.verify
+            ? '<a class="cert-verify" href="' + esc(c.verify) + '" target="_blank" rel="noopener">' +
+              icon("link") + "在线验证</a>"
+            : "") +
+          "</div>" +
           "</div></article>"
         );
       })
