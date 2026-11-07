@@ -197,7 +197,17 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
 .burger { display: none; }
 
 /* ---------------- HERO ---------------- */
-.hero { padding: 96px 0 84px; }
+.hero { padding: 96px 0 84px; position: relative; isolation: isolate; }
+/* 首屏右侧的巨型章节编号水印：负层级，不压正文 */
+.hero::before {
+  content: "01";
+  position: absolute; right: 4px; top: 52px; z-index: -1;
+  font-family: var(--mono);
+  font-size: clamp(140px, 18vw, 240px);
+  font-weight: 700; line-height: 1; letter-spacing: -0.09em;
+  color: var(--text); opacity: .018;
+  pointer-events: none; user-select: none;
+}
 .term {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--mono);
@@ -241,10 +251,30 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
   color: var(--dim);
 }
 .hero-tag {
-  margin-top: 14px;
+  position: relative;
+  margin-top: 18px;
+  padding-left: 24px;
   max-width: 44ch;
-  font-size: 1.05rem;
-  color: color-mix(in srgb, var(--text) 78%, transparent);
+  font-size: 1.24rem;
+  font-weight: 650;
+  letter-spacing: .01em;
+  color: var(--text);
+}
+.hero-tag::before {
+  content: "//";
+  position: absolute; left: 0; top: .12em;
+  font-family: var(--mono);
+  font-size: .92rem; font-weight: 400;
+  letter-spacing: -.06em;
+  color: var(--accent);
+}
+.hero-tag::after {
+  content: "";
+  display: block;
+  width: 128px; height: 1px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: .55;
 }
 
 .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
@@ -280,8 +310,11 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
   overflow: hidden;
   background: var(--panel);
 }
-.stat { padding: 16px 20px; border-left: 1px solid var(--line); }
+.stat { padding: 16px 20px; border-left: 1px solid var(--line); transition: background .22s ease; }
 .stat:first-child { border-left: 0; }
+.stat:hover { background: var(--accent-soft); }
+.stat dd { transition: color .22s ease; }
+.stat:hover dd { color: var(--accent); }
 .stat dt {
   font-family: var(--mono);
   font-size: 11px;
@@ -883,7 +916,8 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
   .hero { padding: 64px 0 56px; }
   .hero-title { gap: 10px; }
   .hero-alias { transform: translateY(-3px); }
-  .hero-tag { font-size: .98rem; }
+  .hero::before { display: none; }
+  .hero-tag { font-size: 1.08rem; }
   .stats { grid-template-columns: 1fr 1fr; margin-top: 42px; }
   .stat { padding: 14px 16px; }
   .stat:nth-child(3) { border-left: 0; }
