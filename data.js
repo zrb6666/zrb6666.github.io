@@ -36,7 +36,7 @@ const SITE = {
     { k: "since", v: "2025" },
     { k: "projects", v: "4" },
     { k: "released", v: "1 app" },
-    { k: "certs", v: "2" },
+    { k: "certs", v: "3" },
   ],
 
   /* ---------- 项目 ---------- */
@@ -145,6 +145,15 @@ const SITE = {
       level: "Micro Certification",
       image: "assets/screenshots/cert-ai.webp",
     },
+    {
+      name: "微软基础 C# 开发者认证",
+      org: "freeCodeCamp · Microsoft",
+      issued: "2026.11.07",
+      valid: "",
+      level: "Developer Certification",
+      image: "assets/screenshots/cert-fcc-csharp.webp",
+      verify: "https://www.freecodecamp.org/chinese/certification/fcc-ac965fd2-fa0f-4f73-8566-362b4d0b18ca/foundational-c-sharp-with-microsoft",
+    },
   ],
 
   /* ---------- 技术栈 ---------- */
@@ -161,6 +170,11 @@ const SITE = {
      image 配图（可选；极客版 / 米哈游版显示缩略图，点击放大）
      顺序：由近到远 */
   timeline: [
+    {
+      time: "2026", date: "2026.11.07", tag: "认证",
+      title: "微软基础 C# 开发者认证",
+      desc: "freeCodeCamp 与 Microsoft 联合颁发。",
+    },
     {
       time: "2026", date: "2026.10.24", tag: "认证",
       title: "HarmonyOS 应用开发者基础认证",
