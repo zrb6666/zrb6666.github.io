@@ -23,7 +23,7 @@ const SITE = {
   alias: "ZRB",                          // 副署名
   role: "独立开发者 / HarmonyOS & 桌面端",
   prompt: "whoami",                      // 首屏那行终端命令，可改成 "cat about.md"
-  tagline: "把日常里忍不了的小麻烦，做成能真正跑起来的 App。",
+  tagline: "技术宅改变世界",
   intro:
     "高中在读，独立开发者。多数项目由我一个人走完需求、设计、开发、发布的完整流程，" +
     "也参与团队项目中的部分模块开发。主要方向是 HarmonyOS NEXT 原生应用，同时在做桌面端。" +
