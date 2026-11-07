@@ -812,6 +812,19 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
   background: var(--panel);
 }
 .timeline li[data-tag="竞赛"]::before { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.tl-shot {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 12px; padding: 6px 12px 6px 6px;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--panel); color: var(--dim); cursor: zoom-in;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em;
+  transition: border-color .25s, transform .25s, color .25s;
+}
+.tl-shot:hover { border-color: var(--accent-line); color: var(--text); transform: translateY(-2px); }
+.tl-shot img {
+  height: 72px; width: auto; max-width: 170px; object-fit: contain;
+  border-radius: 5px; background: #fff;
+}
 .timeline h4 { font-size: 1rem; font-weight: 620; margin-bottom: 4px; }
 .timeline p { font-size: .9rem; color: var(--dim); max-width: 62ch; }
 
