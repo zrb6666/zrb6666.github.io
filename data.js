@@ -74,7 +74,7 @@ const SITE = {
         "Focus Guard 的电脑端与鸿蒙端是两个独立的应用，分别开发、分别发布。" +
         "桌面端基于 Electron + Vue 3 构建，把番茄钟与专注流程搬到键盘鼠标场景。",
       highlights: [],
-      cover: "assets/screenshots/focus-guard-desktop.webp",
+      cover: "", // 暂无截图；补图后填 assets/screenshots/focus-guard-desktop.webp
       demo: "",
       stack: ["Electron", "Vue 3", "JavaScript"],
       links: [
@@ -113,7 +113,7 @@ const SITE = {
         "能自动显示当前课程、上下课提醒、调课与多周轮换课表，并通过组件、主题和插件扩展。" +
         "我参与团队开发，提交了其中一部分代码。",
       highlights: ["团队协作开发，参与部分模块的代码提交"],
-      cover: "assets/screenshots/classisland.webp",
+      cover: "", // 暂无截图；补图后填 assets/screenshots/classisland.webp
       demo: "https://www.classisland.tech/",
       demoLabel: "官网",
       stack: [".NET", "Avalonia", "C#"],
