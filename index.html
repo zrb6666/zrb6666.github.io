@@ -675,6 +675,17 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
 .cert-view svg { width: 12px; height: 12px; flex: none; }
 .cert-view:hover { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
 .cert-view:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 2px; }
+.cert-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; flex: none; }
+.cert-verify, .cert-verify:visited {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .03em;
+  color: var(--accent); text-decoration: none;
+  background: var(--accent-soft); border: 1px solid var(--accent-line); border-radius: 6px;
+  padding: 6px 10px; transition: background .2s, border-color .2s;
+}
+.cert-verify svg { width: 12px; height: 12px; flex: none; }
+.cert-verify:hover { background: color-mix(in srgb, var(--accent) 18%, transparent); border-color: var(--accent); }
+.cert-verify:focus-visible { outline: 2px solid var(--accent-line); outline-offset: 2px; }
 
 /* ---------------- 证书预览 ---------------- */
 .lb {
@@ -1081,7 +1092,7 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
         <span class="sec-no">03</span>
         <h2>认证</h2>
         <span class="sec-line"></span>
-        <p class="sec-sub">通过华为官方考核取得的技术资格，均在有效期内。</p>
+        <p class="sec-sub">通过官方考核取得的开发者认证，附原图与在线验证入口。</p>
       </div>
       <div class="certs" id="certsList"></div>
     </div>
