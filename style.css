@@ -157,6 +157,14 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
 .nav-links a.active span { color: var(--accent); }
 
 .nav-actions { display: flex; align-items: center; gap: 8px; }
+.nav-alt {
+  display: inline-flex; align-items: center;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+  color: var(--dim); white-space: nowrap;
+  border: 1px solid var(--line); border-radius: 8px; padding: 7px 11px;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.nav-alt:hover { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
 .icon-btn {
   width: 34px; height: 34px;
   display: grid; place-items: center;
@@ -856,6 +864,7 @@ ul, ol, dl, dd { margin: 0; padding: 0; }
   .nav-links a { padding: 11px 12px; font-size: 14px; }
   .burger { display: grid; }
   .brand-slash { display: none; }
+  .nav-alt { display: none; }
 
   .hero { padding: 64px 0 56px; }
   .hero-title { gap: 10px; }
