@@ -410,6 +410,8 @@ main,header,footer{position:relative;z-index:2}
 .cert-org{font-size:12.5px;color:var(--sub);margin-top:8px}
 .cert-meta{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:16px;letter-spacing:.08em}
 .cert-zoom{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--cyan);margin-top:18px;font-family:var(--mono)}
+.cert-link{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:6px 11px;border:1px solid rgba(77,201,245,.45);border-radius:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--cyan);text-decoration:none;background:rgba(77,201,245,.08);transition:background .25s,color .25s}
+.cert-link:hover,.cert-link:visited{color:#eaf8ff;background:rgba(77,201,245,.2)}
 
 /* ---------- 05 关于 / 技术栈 ---------- */
 .about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(40px,7vw,96px);align-items:start}
@@ -690,7 +692,7 @@ main,header,footer{position:relative;z-index:2}
       <div class="sec-side">点击证书可放大查看原图。</div>
     </div>
     <div class="certs-grid" id="certsGrid"></div>
-    <div class="cert-foot reveal"><span><b>VERIFIED</b> / 02 ITEMS &nbsp;·&nbsp; HARMONYOS · AI</span><span>点击任意卡片查看证书原图 ↗</span></div>
+    <div class="cert-foot reveal"><span><b>VERIFIED</b> / <span id="certCount">03</span> ITEMS &nbsp;·&nbsp; HARMONYOS · MICROSOFT · AI</span><span>点击任意卡片查看证书原图 ↗</span></div>
   </section>
 
   <!-- 05 关于 -->
@@ -813,6 +815,7 @@ main,header,footer{position:relative;z-index:2}
   }).join('');
 
   /* ---------- 认证 ---------- */
+  $('#certCount').textContent = String(S.certs.length).padStart(2, '0');
   $('#certsGrid').innerHTML = S.certs.map(function (c, i) {
     return '<div class="cert-card reveal d' + (i + 1) + '" data-img="' + esc(c.image || '') + '" tabindex="0" role="button" aria-label="放大查看 ' + esc(c.name) + '">' +
       '<span class="cert-no">' + String(i + 1).padStart(2, '0') + ' / ' + String(S.certs.length).padStart(2, '0') + '</span>' +
@@ -820,8 +823,10 @@ main,header,footer{position:relative;z-index:2}
       '<div><div class="cert-level">' + esc(c.level || 'CERTIFICATE') + '</div>' +
       '<div class="cert-name">' + esc(c.name) + '</div>' +
       '<div class="cert-org">' + esc(c.org) + '</div>' +
-      '<div class="cert-meta">' + esc(c.issued) + ' &nbsp;—&nbsp; ' + esc(c.valid) + '</div>' +
-      '<div class="cert-zoom">⊕ 查看原图</div></div></div>';
+      '<div class="cert-meta">' + esc(c.issued) + (c.valid ? ' &nbsp;—&nbsp; ' + esc(c.valid) : '') + '</div>' +
+      '<div class="cert-zoom">⊕ 查看原图</div>' +
+      (c.verify ? '<a class="cert-link" href="' + esc(c.verify) + '" target="_blank" rel="noopener">↗ 在线验证</a>' : '') +
+      '</div></div>';
   }).join('');
 
   /* ---------- 关于 ---------- */
@@ -853,12 +858,14 @@ main,header,footer{position:relative;z-index:2}
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   $('#certsGrid').addEventListener('click', function (e) {
+    if (e.target.closest('a')) return;
     var card = e.target.closest('.cert-card'); if (card) openLb(card.dataset.img);
   });
   $('#newsList').addEventListener('click', function (e) {
     var b = e.target.closest('[data-lb-src]'); if (b) openLb(b.getAttribute('data-lb-src'));
   });
   $('#certsGrid').addEventListener('keydown', function (e) {
+    if (e.target.closest('a')) return;
     if (e.key === 'Enter' || e.key === ' ') {
       var card = e.target.closest('.cert-card');
       if (card) { e.preventDefault(); openLb(card.dataset.img); }
