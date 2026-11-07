@@ -322,15 +322,15 @@
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
-    var list = $("certsList");
-    if (list) {
-      list.addEventListener("click", function (e) {
-        var t = e.target;
-        var btn = t && t.closest ? t.closest(".cert-view") : null;
-        if (!btn) return;
-        open(btn.getAttribute("data-src"), btn.getAttribute("data-name"));
-      });
-    }
+    document.addEventListener("click", function (e) {
+      var t = e.target;
+      var btn = t && t.closest ? t.closest(".cert-view, [data-lb-src]") : null;
+      if (!btn) return;
+      open(
+        btn.getAttribute("data-src") || btn.getAttribute("data-lb-src"),
+        btn.getAttribute("data-name") || "图片"
+      );
+    });
 
     function loaded() {
       box.classList.remove("loading");
@@ -359,9 +359,15 @@
       .map(function (t) {
         var when = esc(t.date || t.time);
         var tag = t.tag ? '<span class="tl-tag">' + esc(t.tag) + "</span>" : "";
+        var shot = t.image
+          ? '<button class="tl-shot" type="button" data-lb-src="' + esc(t.image) +
+              '" data-name="' + esc(t.title) + '" aria-label="查看配图：' + esc(t.title) + '">' +
+              '<img src="' + esc(t.image) + '" alt="' + esc(t.imageAlt || t.title) + '" loading="lazy">' +
+              "<span>查看原图 ↗</span></button>"
+          : "";
         return (
           '<li class="reveal" data-tag="' + esc(t.tag || "") + '"><time>' + when + tag + "</time><h4>" + esc(t.title) +
-          "</h4><p>" + esc(t.desc) + "</p></li>"
+          "</h4><p>" + esc(t.desc) + "</p>" + shot + "</li>"
         );
       })
       .join("");
